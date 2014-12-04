@@ -26,7 +26,7 @@ def sortFinish(largstr, starts, finishes, energies):
    for i in range(0, len(sortedstarts)):
          arindex = findStartIndex(sortedstarts[i],starts)
          if ( arindex > -1 ):
-           rstarts.append(starts[arindex])
+           rstarts.append(sortedstarts[arindex])
            rfinishes.append(finishes[arindex])
            renergies.append(energies[arindex])
 
