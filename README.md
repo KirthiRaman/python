@@ -4,6 +4,8 @@ A CORRECTION:
   First I thought something was wrong with the sort program.  But looks like the data has some duplicates as shown below:
   (After being suspicious, I ran some quick program to see if those diplicates occur and where they occur)
   DATA DUPLICATES:
+  
+  {
    duplicate value 50402 50790 1164
    duplicate value 56932 57308 1504
    duplicate value 131327 131474 735
@@ -17,6 +19,7 @@ A CORRECTION:
    duplicate value 656434 656810 1880
    duplicate value 659895 660246 1053
    duplicate value 850812 851224 824 
+  }
   
 Assignment by endgame recruiter
 I am not going to write too much here - (So people could google search and copy the results)
