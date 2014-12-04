@@ -30,8 +30,13 @@ def sortFinish(largstr, starts, finishes, energies):
            rfinishes.append(finishes[arindex])
            renergies.append(energies[arindex])
 
-   return (rstarts, rfinishes, renergies)
+   print "------Sorted Input -----------"
+   for i in range(0, len(rstarts)):
+      print rstarts[i], rfinishes[i], renergies[i]
 
+   print "------------------------------"
+   return (rstarts, rfinishes, renergies)
+   
 def read_flight_paths(r):
    '''Read flight paths data from reader r, returning lists of start,
    finish, and energy.'''
@@ -40,7 +45,7 @@ def read_flight_paths(r):
    finishes = []
    energies = []
    largstr = 0
-   
+
    for line in r:
      start, finish, energy = line.split()
      starts.append(int(start))
@@ -96,8 +101,8 @@ def process_flight_paths(starts,finishes,energies, energyOverhead):
 
    found=0
    i=0
-   minindex=0
    mincost=99999
+   minindex=-1
    list = [i]
    listoflists.append(list)
 
@@ -112,12 +117,11 @@ def process_flight_paths(starts,finishes,energies, energyOverhead):
    '''
    print "Number of data rows = ",len(starts)
    for i in range(0, len(starts)-1):
-     minindex=-1
      for j in range(0, len(listoflists)):
         found=0
         thislist = listoflists[j]
         thisindex = lastItem(thislist)
-        if ( finishes[thisindex] <= starts[i+1] ):
+        if ( finishes[thisindex] <= starts[i+1]):
            found=1
            thislist.append(i+1)
            cost[j] = cost[j]+(starts[i+1]-finishes[thisindex])*energyOverhead+energies[i+1]
@@ -128,8 +132,19 @@ def process_flight_paths(starts,finishes,energies, energyOverhead):
         cost.append(cost[0]+(starts[i+1]-starts[0])*energyOverhead+energies[i+1])
    listoflists, cost = reducePathLists(listoflists, cost, len(starts)-1)
 
-   print listoflists
-   return cost
+   mincost = cost[0]
+   minindex=0
+   for i in range(1, len(cost)):
+     if ( cost[i] < mincost ):
+         mincost = cost[i]
+         minindex= i
+   newlistoflists=[]
+   newcost=[]
+   newcost.append(cost[minindex])
+   newlistoflists.append(listoflists[minindex])
+
+   print newlistoflists
+   return newcost
 
 if __name__ == "__main__":
    input_file = open(sys.argv[1], "r")
@@ -138,3 +153,4 @@ if __name__ == "__main__":
    print process_flight_paths(starts, finishes, energies, energyOverhead)
    input_file.close()
 
+   
