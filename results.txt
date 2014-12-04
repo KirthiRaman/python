@@ -1,3 +1,5 @@
+Using the given dataset (which apparently has some duplicates)
+
 Energy Cost: [5825405]
 
 Flight Path:
