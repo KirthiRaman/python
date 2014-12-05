@@ -7,8 +7,8 @@ char outputfname[] = "flight_paths.txt";
 int start[5000], finish[5000], energy[5000];
 int sort_index[5000];
 
-int findStartIndex(int str){
-   int i=0;
+int findStartIndex(int str, int fromhere){
+   int i=fromhere;
    int found=0;
    int retval = -1;
 
@@ -26,19 +26,30 @@ void sortFinish(int largstr, FILE *outfile){
    int *numsortindex;
    numsortindex = malloc(sizeof(int)*largstr);
    int i=0, arindex;
-
+   int fromstart = 0;
+   int bitlist[5000];
+   
    for(i=1; i<=largstr; i++)
       numsortindex[i] = 0;
    
    for(i=0; i<5000; i++){
       numsortindex[start[i]]  = 1;
+      bitlist[i] = 0;
    }
 
    for(i=1;i<=largstr; i++){
       if ( numsortindex[i] > 0 ){
-         arindex = findStartIndex(i);
-         if ( arindex > -1 )
-           fprintf(outfile,"%d %d %d\n",start[arindex], finish[arindex], energy[arindex]);
+         fromstart=0;
+         arindex = findStartIndex(i, fromstart);
+         while ( arindex > -1 ){
+            if ( bitlist[arindex] != 1){
+               bitlist[arindex] = 1;
+               fprintf(outfile,"%d %d %d\n",start[arindex], finish[arindex], energy[arindex]);
+            }      
+            fromstart = arindex+1;
+            arindex = findStartIndex(i, fromstart);
+            if ( arindex > 1) i++;
+         }
       }
    }
 }
