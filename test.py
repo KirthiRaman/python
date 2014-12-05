@@ -20,7 +20,7 @@ def sortFinish(largstr, starts, finishes, energies):
    startfromhere=0
    
 ''' The following lines were added to handle the duplicate
-       starts - which earlier was ignoring those duplicates '''
+       starts - which was missing in previous commits '''
    bitlist = []
    for i in range(0, len(starts)):
      bitlist.append(0)
@@ -44,12 +44,13 @@ def sortFinish(largstr, starts, finishes, energies):
            ''' In order to avoid the duplicates in loop '''
            if ( arindex > -1 ):
               i = i+1
-
+              
+   ''' Technically we could comment these lines below between the dashed lines '''
    print "------Sorted Input -----------"
    for i in range(0, len(rstarts)):
       print rstarts[i], rfinishes[i], renergies[i]
-
    print "------------------------------"
+   
    return (rstarts, rfinishes, renergies)
    
 def read_flight_paths(r):
@@ -107,9 +108,11 @@ def process_flight_paths(starts,finishes,energies, energyOverhead):
    '''Return the paths that is optimal. Came home late last night,
       therefore will be working on this today/tomorrow whenever time permits. '''
 
+   ''' These literals were only used for debug statements '''
    constliteral = " And "
    costliteral =  " Costs now are "
    check = " check"
+   
    numpaths = 1
    listoflists = []
    cost = [energies[0]]
