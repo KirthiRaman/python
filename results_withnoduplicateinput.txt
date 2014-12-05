@@ -1,1 +1,4 @@
 Sorry!
+  This was created originally - under the impression that the input data was not correct. Later afer I figured that there was
+  a flaw in sorting algorithm (sorting input data), I fixed both Java and python versions.  I did not fix the C program, 
+  but the idea was to just show that I can code in C, Java, Python, Javascript.  Lately I have been learning Scala.
