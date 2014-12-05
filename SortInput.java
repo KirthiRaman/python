@@ -19,8 +19,9 @@ public class SortInput{
     }
 
     public void sortData(){
-        HashMap<Integer, String> map = new HashMap<Integer, String>();
+        HashMap<Integer, ArrayList<String>> map = new HashMap<Integer, ArrayList<String>>();
         Vector<Integer> keys = new Vector<Integer>();
+        ArrayList<String> dataList;
 
         String s1 = "", id="", str="", sid="";
         String heading="", sortheading="";
@@ -35,8 +36,19 @@ public class SortInput{
                pos = s1.indexOf(" ");
                str = s1.substring(0, pos);
                len = Integer.parseInt(str);
-               keys.add(len);
-               map.put(len, s1);
+               if ( !keys.contains(len) )
+                 keys.add(len);
+               if ( map.get(len) == null ){
+                  dataList = new ArrayList<String>();
+                  dataList.add(s1);
+                  map.put(len, dataList);
+               } else {
+                  dataList = map.get(len);
+                  if ( !dataList.contains(s1) ){
+                    dataList.add(s1);
+                    map.put(len, dataList);
+                  }
+               }
             }
 
         } catch(FileNotFoundException fnfx){
@@ -47,7 +59,11 @@ public class SortInput{
             Collections.sort(keys);
             int siz = keys.size();
             for(int i=0; i<siz; i++){
-               sortedData.add(map.get(keys.elementAt(i)));
+               dataList = map.get(keys.elementAt(i));
+               for(String data: dataList){
+                 sortedData.add(data);
+                 System.out.println(data);
+               }
             }
         }
    }
@@ -60,4 +76,4 @@ public class SortInput{
         psf.inputFile = args[0];
         psf.sortData();
    }*/
-}
+}               
