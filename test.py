@@ -19,7 +19,7 @@ def sortFinish(starts, finishes, energies):
    arindex=0
    startfromhere=0
    
-''' The following lines were added to handle the duplicate
+   ''' The following lines were added to handle the duplicate
        starts - which was missing in previous commits '''
    bitlist = []
    for i in range(0, len(starts)):
