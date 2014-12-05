@@ -23,13 +23,12 @@ public class SortInput{
         Vector<Integer> keys = new Vector<Integer>();
         ArrayList<String> dataList;
 
-        String s1 = "", id="", str="", sid="";
-        String heading="", sortheading="";
-        int pos, count=1, len=0;
+        String s1 = "", id="", str="";
+        int pos, len=0;
         try {
             InputStreamReader is = new InputStreamReader(new FileInputStream(new File(inputFile)));
             BufferedReader bufferedreader = new BufferedReader(is);
-            id = bufferedreader.readLine();
+            id = bufferedreader.readLine(); // overheadEnergyCost
             this.overheadEnergyCost = Integer.parseInt(id);
             while( (s1 = bufferedreader.readLine()) != null) {
                s1 = s1.trim();
@@ -62,7 +61,7 @@ public class SortInput{
                dataList = map.get(keys.elementAt(i));
                for(String data: dataList){
                  sortedData.add(data);
-                 System.out.println(data);
+                 System.out.println(data);  // can skip printing if one needs (only for debugging purpose)
                }
             }
         }
