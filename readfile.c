@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+// This file was originally created (the first source file to be created in solving the assignment)
+// I usually try something in C and Python just for curiousity (I do not want to lose touch with C programming - sort
+//  of my first programming language that I really felt like doing something)
 char fname[] = "gamedata.txt";
 char outputfname[] = "flight_paths.txt";
 int start[5000], finish[5000], energy[5000];
