@@ -1,5 +1,8 @@
 python
 ======
+EARLIER CORRECTION HERE BELOW IS INCORRECT (The duplicate values were only for start, not finish and energies)
+I AM KEEPING THIS COMMENT TO FOLLOW MY PROGRESS ALONG:
+---------------EARLIER COMMENT (NOT VALID ANYMORE------------------------------------------------------------
 A CORRECTION:
   First I thought something was wrong with the sort program.  But looks like the data has some duplicates as shown below:
   (After being suspicious, I ran some quick program to see if those diplicates occur and where they occur)
@@ -20,6 +23,12 @@ A CORRECTION:
    duplicate value 659895 660246 1053
    duplicate value 850812 851224 824 
   }
+  ------------------------------------------------------------------------
+  NEW COMMENT:
+  The algorithm for sorting the input (from both python and Java has been changed to make sure they work correctly)
+  After that both python and Java have produced the same results.
+  
+  
   
 Assignment by endgame recruiter
 I am not going to write too much here - (So people could google search and copy the results)
