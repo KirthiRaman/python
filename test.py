@@ -13,7 +13,7 @@ def findStartIndex(j, starts, fromhere):
 
    return retval
 
-def sortFinish(largstr, starts, finishes, energies):
+def sortFinish(starts, finishes, energies):
    sortedstarts = sorted(starts)
    i=0
    arindex=0
@@ -60,17 +60,14 @@ def read_flight_paths(r):
    starts = []
    finishes = []
    energies = []
-   largstr = 0
 
    for line in r:
      start, finish, energy = line.split()
      starts.append(int(start))
      finishes.append(int(finish))
      energies.append(int(energy))
-     if ( start > largstr ):
-       largstr = start
 
-   starts,finishes,energies = sortFinish(largstr,starts,finishes, energies)
+   starts,finishes,energies = sortFinish(starts,finishes, energies)
    return (starts, finishes, energies)
 
 def lastItem(list):
