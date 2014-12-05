@@ -1,7 +1,7 @@
 import sys
 
-def findStartIndex(j, starts):
-   i=0
+def findStartIndex(j, starts, fromhere):
+   i=fromhere
    found=0
    retval = -1
 
@@ -17,6 +17,13 @@ def sortFinish(largstr, starts, finishes, energies):
    sortedstarts = sorted(starts)
    i=0
    arindex=0
+   startfromhere=0
+   
+''' The following lines were added to handle the duplicate
+       starts - which earlier was ignoring those duplicates '''
+   bitlist = []
+   for i in range(0, len(starts)):
+     bitlist.append(0)
 
    rstarts = []
    rfinishes = []
@@ -24,11 +31,19 @@ def sortFinish(largstr, starts, finishes, energies):
 
    print "len = ",len(sortedstarts)
    for i in range(0, len(sortedstarts)):
-         arindex = findStartIndex(sortedstarts[i],starts)
-         if ( arindex > -1 ):
+         startfromhere=0
+         arindex = findStartIndex(sortedstarts[i],starts, startfromhere)
+         while ( arindex > -1 ):
+           if ( bitlist[arindex] != 1 ):
+             bitlist[arindex] = 1
            rstarts.append(starts[arindex])
            rfinishes.append(finishes[arindex])
            renergies.append(energies[arindex])
+           startfromhere = arindex+1
+           arindex = findStartIndex(sortedstarts[i],starts,startfromhere)
+           ''' In order to avoid the duplicates in loop '''
+           if ( arindex > -1 ):
+              i = i+1
 
    print "------Sorted Input -----------"
    for i in range(0, len(rstarts)):
