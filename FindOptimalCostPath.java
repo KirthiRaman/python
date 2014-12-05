@@ -54,6 +54,8 @@ public class FindOptimalCostPath {
          }
        }
  
+       pathlist.clear();
+       costlist.clear();
        pathlist = newpathlist;
        costlist = newcostlist;
     }
@@ -110,7 +112,9 @@ public class FindOptimalCostPath {
          ArrayList<Integer> newcostlist = new ArrayList<Integer>();
          newcostlist.add(costlist.get(minindex));
          newlistoflist.add(pathlist.get(minindex));
-
+ 
+         pathlist.clear();
+         costlist.clear();
          pathlist = newlistoflist;
          int count=0;
          System.out.println("[");
