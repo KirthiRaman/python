@@ -36,7 +36,8 @@ def sortFinish(starts, finishes, energies):
    for i in range(0, len(sortedstarts)):
          startfromhere=0
          arindex = findStartIndex(sortedstarts[i],starts, startfromhere)
-         while ( arindex > -1 ):
+         ''' recently added check for i falling within the range , which was missing '''
+         while ( arindex > -1  and i < len(sortedstarts) ):
            if ( bitlist[arindex] != 1 ):
              bitlist[arindex] = 1
            rstarts.append(starts[arindex])
