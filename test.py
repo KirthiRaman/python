@@ -2,10 +2,13 @@ import sys
 
 def findStartIndex(j, starts, fromhere):
    i=fromhere
+   num = len(starts)
    found=0
    retval = -1
 
-   while ( i < 5000 and (found==0) ):
+  ''' Earlier version had 5000 hard-coded instead of num which broke the
+      function for smaller inpurts, so I had to put this fix today'''
+   while ( i < num and (found==0) ):
       if ( starts[i] == j ):
           found = 1
           retval = i
