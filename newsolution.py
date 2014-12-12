@@ -101,7 +101,7 @@ def process_flight_paths(starts,finishes,energies, energyOverhead):
         listoflists.append(list)
         '''cost[0]'''
         cost.append((starts[i+1]-starts[0])*energyOverhead+energies[i+1]) 
-   print listoflists, cost
+   
    listoflists, cost = reducePathLists(listoflists, cost, len(starts)-1)
 
    mincost = cost[0]
