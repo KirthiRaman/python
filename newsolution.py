@@ -22,7 +22,6 @@ def read_flight_paths(r):
      triplelist.append(tripledata)
 
    triplelist = sorted(triplelist, key = firstItem)
-   print triplelist
    
    for i in range(0, len(triplelist)):
      list = triplelist[i]
