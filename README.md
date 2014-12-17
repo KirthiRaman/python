@@ -3,8 +3,7 @@ The algorithm for sorting the input (from both python and Java has been changed 
   After that both python and Java have produced the same results.
   
 
-This is an assignment by endgame recruiter
-
+This is an assignment by Blah blah
 
 I am not going to write too much here - (So people could google search and copy the results)
 
