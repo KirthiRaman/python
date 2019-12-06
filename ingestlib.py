@@ -1,4 +1,5 @@
-def get_my_log_stream(event, context):  
+#!/usr/bin/python3 
+def ingest_log_stream(event, context):  
     """Extract time/memory logistics for Lambda
        to keep track of memory/time usage vs data size
     :param event: the event that triggered this lambda
@@ -16,7 +17,7 @@ def get_my_log_stream(event, context):
     print("Time remaining in Minutes ", timeremain)
     return str(mconstime)
                   
-def getsize_string(fsiz):
+def ingest_size_string(fsiz):
     """Create a formatted size based on the number
     :param fsiz: in Bytes the size of content
     :return: formatted either in KB, MB, GB depending on the size.
@@ -30,7 +31,7 @@ def getsize_string(fsiz):
     result = "{0:.2f} {1}".format(fsiz, sizes[order])
     return result
 
-def getpackagename(fname):
+def ingest_getpackagename(fname):
     """Clean package name for special case (tar.gz and tar)
     :param fname: file name - determines the cleanup
    :return: .tar or .gz
@@ -42,7 +43,7 @@ def getpackagename(fname):
     else:
         return fname
 
-def get_content_type(str):
+def ingest_getcontenttype(str):
     if str.find('application/') > -1: 
        pos = str.find('application/')+len('application/')
        retval = str[pos:]
